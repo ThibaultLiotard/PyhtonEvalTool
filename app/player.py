@@ -329,5 +329,6 @@ def create_new_player(player_window):
 def open_player_page(window):
     player_window = Toplevel(window)
     player_window.title("Player Page")
+    player_window.geometry("800x600")
     player_window.minsize(800, 600)
     create_new_player(player_window)

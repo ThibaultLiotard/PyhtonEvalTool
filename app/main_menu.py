@@ -18,8 +18,8 @@ def run_main_menu():
     button_frame.place(relx=0.5, rely=0.5, anchor="center")
 
     player_button = tk.Button(button_frame, text="Player Page", command=lambda: player.open_player_page(window))
-    inventory_button = tk.Button(button_frame, text="Inventory Object Page", command=lambda: inventory.open_inventory_page(window))
-    equipment_button = tk.Button(button_frame, text="Equipment Parts Page", command=lambda: equipment.open_equipment_page(window))
+    inventory_button = tk.Button(button_frame, text="Inventory Object Page", command=lambda: inventory.open_equipment_page(window))
+    equipment_button = tk.Button(button_frame, text="Equipment Parts Page", command=lambda: equipment.main())
 
     # Organiser les boutons dans le cadre
     player_button.pack(pady=10)
