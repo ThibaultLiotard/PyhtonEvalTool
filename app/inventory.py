@@ -33,7 +33,7 @@ def roll_dice(dice_type):
 def setup_weapon_tab(tab, equipment_list, image_label):
     # Weapon Name
     weapon_name_var = tk.StringVar()
-    Label(tab, text='Name').grid(row=0, column=0, sticky='e')
+    Label(tab, text='Name :').grid(row=0, column=0, sticky='e')
     Entry(tab, textvariable=weapon_name_var).grid(row=0, column=1)
 
     # Weapon Description
@@ -61,7 +61,7 @@ def setup_weapon_tab(tab, equipment_list, image_label):
 
     # Weapon Type
     weapon_type_var = tk.StringVar()
-    Label(tab, text='Type').grid(row=5, column=0, sticky='e')
+    Label(tab, text='Type :').grid(row=5, column=0, sticky='e')
     Combobox(tab, textvariable=weapon_type_var, values=[t.value for t in WeaponType]).grid(row=5, column=1)
 
     # Add Weapon Button
@@ -72,7 +72,7 @@ def setup_weapon_tab(tab, equipment_list, image_label):
 
     # Image path
     weapon_image_var = tk.StringVar()
-    Label(tab, text='Image Path').grid(row=7, column=0, sticky='e')
+    Label(tab, text='Image Path :').grid(row=7, column=0, sticky='e')
     Entry(tab, textvariable=weapon_image_var).grid(row=7, column=1)
 
     # Open Image Button
@@ -91,6 +91,100 @@ def setup_tab(tab, equipment_list, tab_name, fields):
     # Add item button
     add_item_button = Button(tab, text=f'Add {tab_name}', command=lambda: add_item(tab_name, fields, equipment_list))
     add_item_button.grid(row=len(fields), column=0, columnspan=2)
+
+def setup_armor_tab(tab, equipment_list):
+    # Armor Name
+    armor_name_var = tk.StringVar()
+    Label(tab, text='Name :').grid(row=1, column=0, sticky='e')
+    Entry(tab, textvariable=armor_name_var).grid(row=1, column=1, sticky='e')
+
+    # Armor Description
+    armor_description_var = tk.StringVar()
+    Label(tab, text='Description :').grid(row=2, column=0, sticky='e')
+    Entry(tab, textvariable=armor_description_var).grid(row=2, column=1, sticky='e')
+
+    # Armor Image Path
+    armor_image_var = tk.StringVar()
+    Label(tab, text='Image Path :').grid(row=3, column=0, sticky='e')
+    Entry(tab, textvariable=armor_image_var).grid(row=3, column=1, sticky='e')
+
+    # Armor Base Defense (Random 2D4)
+    armor_defense_var = tk.StringVar()
+    Label(tab, text='Base Defense :').grid(row=4, column=0, sticky='e')
+    Entry(tab, textvariable=armor_defense_var).grid(row=4, column=1, sticky='e')
+
+    # Armor Resistance Options
+    armor_resistance_var = tk.StringVar()
+    Label(tab, text='Resistance :').grid(row=5, column=0, sticky='e')
+    ttk.Combobox(tab, textvariable=armor_resistance_var, values=['None', 'Fire', 'Poison']).grid(row=5, column=1, sticky='e')
+
+    # Add Armor Button
+    add_armor_button = Button(tab, text='Add Armor', #command=lambda: add_armor(
+        #armor_name_var, armor_description_var, armor_image_var, armor_defense_var, armor_resistance_var, equipment_list)
+    )
+    add_armor_button.grid(row=6, column=0, sticky='e')
+
+
+def setup_potion_tab(tab, equipment_list):
+    # Potion Name
+    potion_name_var = tk.StringVar()
+    Label(tab, text='Name').grid(row=1, column=0, sticky='e')
+    Entry(tab, textvariable=potion_name_var).grid(row=1, column=1, sticky='e')
+
+    # Potion Description
+    potion_description_var = tk.StringVar()
+    Label(tab, text='Description').grid(row=2, column=0, sticky='e')
+    Entry(tab, textvariable=potion_description_var).grid(row=2, column=1, sticky='e')
+
+    # Potion Image Path
+    potion_image_var = tk.StringVar()
+    Label(tab, text='Image Path').grid(row=3, column=0, sticky='e')
+    Entry(tab, textvariable=potion_image_var).grid(row=3, column=1, sticky='e')
+
+    # Potion Power (Random 1D6)
+    potion_power_var = tk.StringVar()
+    Label(tab, text='Power').grid(row=4, column=0, sticky='e')
+    Entry(tab, textvariable=potion_power_var).grid(row=4, column=1, sticky='e')
+
+    # Potion Effect Options
+    potion_effect_var = tk.StringVar()
+    Label(tab, text='Effect  ').grid(row=5, column=0, sticky='e')
+    ttk.Combobox(tab, textvariable=potion_effect_var, values=['None', 'Heal', 'Fire', 'Poison']).grid(row=5, column=1, sticky='e')
+
+    # Add Potion Button
+    add_potion_button = Button(tab, text='Add Potion', #command=lambda: add_potion(
+        #potion_name_var, potion_description_var, potion_image_var, potion_power_var, potion_effect_var, equipment_list)
+                               )
+    add_potion_button.grid(row=6, column=1, sticky='e')
+
+
+def setup_special_item_tab(tab, equipment_list):
+    # Special Item Name
+    special_item_name_var = tk.StringVar()
+    Label(tab, text='Name').grid(row=1, column=0, sticky='e')
+    Entry(tab, textvariable=special_item_name_var).grid(row=1, column=1)
+
+    # Special Item Description
+    special_item_description_var = tk.StringVar()
+    Label(tab, text='Description').grid(row=2, column=0, sticky='e')
+    Entry(tab, textvariable=special_item_description_var).grid(row=2, column=1)
+
+    # Special Item Image Path
+    special_item_image_var = tk.StringVar()
+    Label(tab, text='Image Path').grid(row=3, column=0, sticky='e')
+    Entry(tab, textvariable=special_item_image_var).grid(row=3, column=1)
+
+    # Weapon ID
+    weapon_id_label = Label(tab, text=generate_id())
+    Label(tab, text='ID').grid(row=4, column=0, sticky='e')
+    weapon_id_label.grid(row=4, column=1)
+
+    # Add Special Item Button
+    add_special_item_button = Button(tab, text='Add Special Item', #command=lambda: add_special_item(
+        #special_item_name_var, special_item_description_var, special_item_image_var, equipment_list)
+                                     )
+    add_special_item_button.grid(row=6, column=1, sticky='e')
+
 
 
 def add_weapon(name_var, description_var, weapon_id, power_var, effect_var, type_var, equipment_list):
@@ -152,48 +246,19 @@ def create_equipment_ui(root):
 
     # Tabs for different item categories
     weapon_tab = Frame(tab_control)
-    tab_control.add(weapon_tab, text='Weapons')
-    setup_weapon_tab(weapon_tab, equipment_list, image_label)
 
-
-# Tabs for different item categories
-    weapon_fields = {
-        'Name': None,
-        'Description': None,
-        'Image Path': None,
-        'Base Power': "2d4"
-    }
-    armor_fields = {
-        'Name': None,
-        'Description': None,
-        'Image Path': None,
-        'Base Defense': "2d4",
-        'Resistance': None
-    }
-    potion_fields = {
-        'Name': None,
-        'Description': None,
-        'Image Path': None,
-        'Power': "1d6",
-        'Effect': None
-    }
-    special_item_fields = {
-        'Name': None,
-        'Description': None,
-        'Image Path': None
-    }
 
     weapon_tab = Frame(tab_control)
     armor_tab = Frame(tab_control)
     potion_tab = Frame(tab_control)
     special_item_tab = Frame(tab_control)
 
-    setup_tab(weapon_tab, equipment_list, 'Weapon', weapon_fields)
-    setup_tab(armor_tab, equipment_list, 'Armor', armor_fields)
-    setup_tab(potion_tab, equipment_list, 'Potion', potion_fields)
-    setup_tab(special_item_tab, equipment_list, 'Special Item', special_item_fields)
+    setup_weapon_tab(weapon_tab, equipment_list, image_label)
+    setup_armor_tab(armor_tab, equipment_list)
+    setup_potion_tab(potion_tab, equipment_list)
+    setup_special_item_tab(special_item_tab, equipment_list)
 
-    tab_control.add(weapon_tab, text='Weapon')
+    tab_control.add(weapon_tab, text='Weapons')
     tab_control.add(armor_tab, text='Armor')
     tab_control.add(potion_tab, text='Potion')
     tab_control.add(special_item_tab, text='Special Item')
