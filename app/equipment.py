@@ -57,14 +57,14 @@ def roll_dice(dice_type):
 
 
 
-# Mettre à jour la liste de l'inventaire dans l'interface utilisateur
+# Update equipment list in UI
 def update_equipment_list(equipment_list):
     equipment_list.delete(0, tk.END)
     for item_id, item in inventory.items():
         equipment_list.insert(tk.END, f"{item['name']} (ID: {item_id})")
 
 
-# Sauvegarder l'inventaire dans un fichier JSON
+# Save Equipment in a json file
 def save_equipment():
     try:
         with open("equipment.json", "w") as file:
@@ -91,10 +91,10 @@ def load_equipment_at_start():
         with open("equipment.json", "r") as file:
             inventory = json.load(file)
     except FileNotFoundError:
-        # Si le fichier n'existe pas, initialisez l'inventaire avec des dictionnaires vides
+        # If the file does not exist, initialize the inventory with empty dictionaries
         inventory = {'Weapons': {}, 'Armor': {}, 'Shield': {}}
     except json.JSONDecodeError:
-        # En cas d'erreur de décodage JSON, affichez une erreur et initialisez l'inventaire avec des dictionnaires vides
+        # In case of JSON decoding error, show an error and initialize inventory with empty dictionaries
         messagebox.showerror("Load Error", "The inventory file is corrupt or invalid.")
         inventory = {'Weapons': {}, 'Armor': {}, 'Shield': {}}
 
